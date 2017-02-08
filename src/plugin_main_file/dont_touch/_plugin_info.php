@@ -2,8 +2,8 @@
 /*
 Plugin Name: Languages Frontend Display
 Plugin URI: http://waterproof-webdesign.info/languages-frontend-display
-Description: ???
-Version: 0.0.1
+Description: qTranslate-X extension. Enable/disable languages on frontened
+Version: 0.0.2
 Author: jhotadhari
 Author URI: http://waterproof-webdesign.info/
 License: GNU General Public License v2 or later

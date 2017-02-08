@@ -12,6 +12,7 @@ In case someone wants to access an excluded language, he/she/it/they will be red
 
 qTranslate-X option "Detect Browser Language" and  "URL Modification Mode -> Hide URL language information for default language" has to be false.
 
+tested with qTranslate-X version 3.4.6.8.
 
 Thanks to CMB2 for their easy metaboxes and optionpages!
 

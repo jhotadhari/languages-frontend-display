@@ -92,7 +92,8 @@ function lfd_disable_languages_frontend () {
 		|| in_array( $q_config['default_language'], $languages_disable ) 	// default language can't be disabled
 		|| $q_config['detect_browser_language'] == 1				// detect_browser_language has to be false
 		|| $q_config['hide_default_language'] == 1					// hide_default_language has to be false
-		) return;
+		) return;
+
 
 	// disable_lang in global q_config
 	foreach ( $languages_disable as $lang_k => $lang_v ){
@@ -126,8 +127,9 @@ function lfd_get_languages(){
 	
 	$langs_arr = array();
 	foreach ( $langs as $lang ){
-		$langs_arr[$lang] = $q_config['language_name'][$lang];
-	}
+		$langs_arr[$lang] = $q_config['language_name'][$lang] . ( $q_config['default_language'] == $lang ? ' ' . __('(default language)','lfd-text') : '' );
+	}
+
 	
 	return $langs_arr;
 }

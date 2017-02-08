@@ -8,7 +8,7 @@ Stable tag: trunk
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-???!
+qTranslate-X extension. Enable/disable languages on frontened
 
 
 == Description ==
@@ -36,6 +36,9 @@ Upload and install this Plugin in the same way you\'d install any other plugin.
 1. http://waterproof-webdesign.info/wp-content/uploads/2017/02/LanguagesFrontendDisplay_settings.png
 
 == Changelog ==
+
+= 0.0.2 =
+added '(default language)' to settings multicheck
 
 = 0.0.1 =
 hurray, first stable version!

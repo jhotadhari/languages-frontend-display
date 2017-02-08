@@ -13,8 +13,9 @@ function lfd_get_languages(){
 	
 	$langs_arr = array();
 	foreach ( $langs as $lang ){
-		$langs_arr[$lang] = $q_config['language_name'][$lang];
-	}
+		$langs_arr[$lang] = $q_config['language_name'][$lang] . ( $q_config['default_language'] == $lang ? ' ' . __('(default language)','lfd-text') : '' );
+	}
+
 	
 	return $langs_arr;
 }

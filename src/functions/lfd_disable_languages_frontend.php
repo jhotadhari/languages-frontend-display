@@ -22,7 +22,8 @@ function lfd_disable_languages_frontend () {
 		|| in_array( $q_config['default_language'], $languages_disable ) 	// default language can't be disabled
 		|| $q_config['detect_browser_language'] == 1				// detect_browser_language has to be false
 		|| $q_config['hide_default_language'] == 1					// hide_default_language has to be false
-		) return;
+		) return;
+
 
 	// disable_lang in global q_config
 	foreach ( $languages_disable as $lang_k => $lang_v ){
