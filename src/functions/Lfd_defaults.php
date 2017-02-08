@@ -8,7 +8,7 @@
 class Lfd_defaults {
 
 
-	protected $defaults = array();
+	public $defaults = array();
 
 	public function add_default( $arr ){
 		$defaults = $this->defaults;

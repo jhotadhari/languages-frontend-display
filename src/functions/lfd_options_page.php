@@ -70,9 +70,9 @@ class Lfd_admin_options {
 	public function hooks() {
 		add_action( 'admin_init', array( $this, 'init' ) );
 		add_action( 'admin_menu', array( $this, 'add_options_page' ) );
+
 		add_action( 'cmb2_admin_init', array( $this, 'add_options_page_metabox' ) );
-		
-		add_action( 'cmb2_after_options-page_form_' . $this->metabox_id, array( $this, 'enqueue_style'), 10, 2 );
+		add_action( 'cmb2_after_options-page_form_' . $this->metabox_id, array( $this, 'enqueue_style'), 10, 2 );
 		
 	}
 
@@ -112,8 +112,10 @@ class Lfd_admin_options {
 	 * Add the options metabox to the array of metaboxes
 	 * @since  0.1.0
 	 */
-	function add_options_page_metabox() {
-
+	public function add_options_page_metabox() {
+		global $lfd_defaults;
+		$defaults = $lfd_defaults->get_default($this->key);
+		
 		// hook in our save notices
 		add_action( "cmb2_save_options-page_fields_{$this->metabox_id}", array( $this, 'settings_notices' ), 10, 2 );
 
@@ -127,33 +129,72 @@ class Lfd_admin_options {
 				'value' => array( $this->key, )
 			),
 		) );
-
-		// Set our CMB2 fields
-		/*
+		
 		$cmb->add_field( array(
-			'name' => __( 'Test Text', 'lfd-text' ),
-			'desc' => __( 'field description (optional)', 'lfd-text' ),
-			'id'   => 'test_text',
-			'type' => 'text',
-			'default' => 'Default Text',
+			'desc' => 
+				'<span class="font-initial font-red">'
+				. __('detect_browser_language has to be false.','lfd-text')
+				. '</span> '
+				. '<span class="font-initial">'
+				. __('This plugin won\'t do anything, until the qTranslate-X option "Detect Browser Language" is set to false','lfd-text')
+				. '</span> ',
+			'type' => 'title',
+			'id'   => 'if_browser_language',
+			'show_on_cb'   => 'lfd_options_page_show_on_cb_if_browser_language',
+		) );
+		
+		$cmb->add_field( array(
+			'desc' => 
+				'<span class="font-initial font-red">'
+				. __('hide_default_language has to be false.','lfd-text')
+				. '</span> '                                                    
+				. '<span class="font-initial">'
+				. __('This plugin won\'t do anything, until the qTranslate-X option "URL Modification Mode -> Hide URL language information for default language" is set to false','lfd-text')
+				. '</span> ',
+			'type' => 'title',
+			'id'   => 'if_hide_default_language',
+			'show_on_cb'   => 'lfd_options_page_show_on_cb_if_hide_default_language',
+		) );
+		
+		$cmb->add_field( array(
+			'desc' => 
+				'<span class="font-initial font-red">'
+				. __('default language is disabled.','lfd-text')
+				. '</span> '
+				. '<span class="font-initial">'
+				. __('This plugin won\'t do anything, until you enable the default language again.','lfd-text')
+				. '</span> ',
+			'type' => 'title',
+			'id'   => 'if_default_language_disabled',
+			'show_on_cb'   => 'lfd_options_page_show_on_cb_if_default_language_disabled',
 		) );
 
 		$cmb->add_field( array(
-			'name'    => __( 'Test Color Picker', 'lfd-text' ),
-			'desc'    => __( 'field description (optional)', 'lfd-text' ),
-			'id'      => 'test_colorpicker',
-			'type'    => 'colorpicker',
-			'default' => '#bada55',
+			'desc' => 
+				'<span class="font-initial font-red">'
+				. __('all languages are disabled.','lfd-text')
+				. '</span> '
+				. '<span class="font-initial">'
+				. __('come on, don\'t do that!','lfd-text')
+				. '</span> ',
+			'type' => 'title',
+			'id'   => 'if_all_languages_disabled',
+			'show_on_cb'   => 'lfd_options_page_show_on_cb_if_all_languages_disabled',
 		) );
-		*/
+		
+		$cmb->add_field( array(
+			'name'    => __( 'Enabled Languages on Frontend', 'lfd-text' ),
+			'id'      => 'languages_frontend',
+			'type'    => 'multicheck',
+			'default' => $defaults['languages_frontend'],
+			'options_cb' => 'lfd_get_languages',
+		) );
 
 	}
-	
 	
 	public function enqueue_style( $post_id, $cmb ) {
 		wp_enqueue_style( 'lfd_options_page', plugin_dir_url( __FILE__ ) . 'css/lfd_options_page.css', false );
 	}
-	
 
 	/**
 	 * Register settings notices for display
@@ -198,6 +239,21 @@ function lfd_admin() {
 	return Lfd_admin_options::get_instance();
 }
 
+
+function lfd_options_page_add_defaults(){
+	global $lfd_defaults;
+	global $q_config;
+	
+	$lfd_defaults->add_default( array(
+		lfd_admin()->key => array(
+			'languages_frontend' => $q_config['enabled_languages']
+			),
+	));
+}
+add_action( 'admin_init', 'lfd_options_page_add_defaults', 2 );
+add_action( 'init', 'lfd_options_page_add_defaults', 2 );
+	
+
 /**
  * Wrapper function around cmb2_get_option
  * @since  0.1.0
@@ -206,6 +262,12 @@ function lfd_admin() {
  * @return mixed           Option value
  */
 function lfd_get_option( $key = '', $default = null ) {
+	global $lfd_defaults;
+	
+	if ( $default == null ){
+		$default = $lfd_defaults->get_default( lfd_admin()->key )[$key];
+	}
+	
 	if ( function_exists( 'cmb2_get_option' ) ) {
 		// Use cmb2_get_option as it passes through some key filters.
 		return cmb2_get_option( lfd_admin()->key, $key, $default );
@@ -214,6 +276,9 @@ function lfd_get_option( $key = '', $default = null ) {
 	// Fallback to get_option if CMB2 is not loaded yet.
 	$opts = get_option( lfd_admin()->key, $key, $default );
 
+	
+	if ( gettype($opts) != 'array' ) return false;
+	
 	$val = $default;
 
 	if ( 'all' == $key ) {
@@ -230,5 +295,24 @@ lfd_admin();
 
 
 
-
+// show_on_cb
+function lfd_options_page_show_on_cb_if_browser_language(){
+	global $q_config;
+	return $q_config['detect_browser_language'] == 1;
+}
+function lfd_options_page_show_on_cb_if_hide_default_language(){
+	global $q_config;
+	return $q_config['hide_default_language'] == 1;
+}
+function lfd_options_page_show_on_cb_if_default_language_disabled(){
+	global $q_config;
+	$languages_frontend = lfd_get_option('languages_frontend');
+	if (! $languages_frontend ) return false;
+	return in_array( $q_config['default_language'], $languages_frontend ) ? false : true;
+}
+function lfd_options_page_show_on_cb_if_all_languages_disabled(){
+	$languages_frontend = lfd_get_option('languages_frontend');
+	if (! $languages_frontend || gettype($languages_frontend) != 'array') return false;
+	return count($languages_frontend) == 0;
+}
 ?>

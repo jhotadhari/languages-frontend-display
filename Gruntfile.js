@@ -117,7 +117,17 @@ module.exports = function(grunt){
 				
 				
 			// assets
-				
+				assets_styles: {
+					files: [
+						'<%= pkg.dirs.src %>/sass/**/*.scss',
+						'!**/dont_touch/**/*',
+						'<%= pattern.global_exclude %>',
+					],
+					tasks: [
+						'sass:build',
+						'local_sync:<%= local_sync.wp_install %>'
+					]
+				},
 				
 				
 			
@@ -182,7 +192,8 @@ module.exports = function(grunt){
 		
 		
 		sass:{
-			options: {
+			options: {
+
 				
 				
 			},
@@ -194,8 +205,10 @@ module.exports = function(grunt){
 				files:{
 					
 					
-					
-					'<%= test_path %>/css/lfd_options_page.css': '<%= pkg.dirs.src %>/sass/lfd_options_page.scss',
+					
+
+					
+'<%= test_path %>/css/lfd_options_page.css': '<%= pkg.dirs.src %>/sass/lfd_options_page.scss',
 					
 				}
 			},
@@ -207,8 +220,10 @@ module.exports = function(grunt){
 				files:{
 					
 					
-					
-					'<%= dist_path %>/css/lfd_options_page.css': '<%= pkg.dirs.src %>/sass/lfd_options_page.scss',
+					
+
+					
+'<%= dist_path %>/css/lfd_options_page.css': '<%= pkg.dirs.src %>/sass/lfd_options_page.scss',
 					
 				}
 			}
@@ -332,7 +347,8 @@ module.exports = function(grunt){
 			
 			
 			
-			
+			
+
 		},
 			
 		concat: {
@@ -345,7 +361,7 @@ module.exports = function(grunt){
 			},
 			readme_and_hist: {
 				options: {
-					banner: '=== <%= pkg.fullName %> ===\nTags: <%= pkg.tags %>\nDonate link: <%= pkg.donateLink %>\nContributors: <%= pkg.contributors %>\nTested up to: <%= pkg.wpVersionTested %>\nRequires at least: <%= pkg.wpRequiresAtLeast%>\nStable tag: trunk\nLicense: <%= pkg.license %>\nLicense URI: <%= pkg.licenseUri %>\n\n<%= pkg.description %>!\n',
+					banner: '=== <%= pkg.fullName %> ===\nTags: <%= pkg.tags %>\nDonate link: <%= pkg.donateLink %>\nContributors: <%= pkg.contributors %>\nTested up to: <%= pkg.wpVersionTested %>\nRequires at least: <%= pkg.wpRequiresAtLeast%>\nStable tag: trunk\nLicense: <%= pkg.license %>\nLicense URI: <%= pkg.licenseUri %>\n\n<%= pkg.description %>\n',
 					separator: '\n\n== Changelog ==\n\n'
 				},
 				src: [
@@ -446,25 +462,35 @@ module.exports = function(grunt){
 					
 					//	composer
 						'composer:update',
-					
+					
+
 					// copy from src to testingDir
 						'copy:root_files',
 						
 						'copy:vendor',
-						
+						
+
 						
 						'copy:images',
-						
-						
+						
+
+						
+
 						'copy:readme',
 						
 					// assets from src to testingDir
-						
-						
-						
-						
-						
-						
+						
+
+						
+
+						
+
+						
+
+						
+
+						
+
 
 					// concat functions from src to testingDir
 
@@ -716,25 +742,35 @@ module.exports = function(grunt){
 					
 					//	composer
 						'composer:update',
-					
+					
+
 					// copy from src to testingDir
 						'copy:root_files_dist',
 						
 						'copy:vendor_dist',
-						
+						
+
 						
 						'copy:images_dist',
-						
-						
+						
+
+						
+
 						'copy:readme_dist',
 						
 					// assets from src to testingDir
-						
-						
-						
-						
-						
-						
+						
+
+						
+
+						
+
+						
+
+						
+
+						
+
 
 					// concat functions from src to dist
 
