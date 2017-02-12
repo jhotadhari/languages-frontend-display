@@ -203,13 +203,7 @@ module.exports = function(grunt){
 					// style: 'compressed'
 				},
 				files:{
-					
-					
-					
-
-					
-'<%= test_path %>/css/lfd_options_page.css': '<%= pkg.dirs.src %>/sass/lfd_options_page.scss',
-					
+					'<%= test_path %>/css/lfd_options_page.css': '<%= pkg.dirs.src %>/sass/lfd_options_page.scss',
 				}
 			},
 			dist: {
@@ -218,13 +212,7 @@ module.exports = function(grunt){
 					style: 'compressed'
 				},
 				files:{
-					
-					
-					
-
-					
-'<%= dist_path %>/css/lfd_options_page.css': '<%= pkg.dirs.src %>/sass/lfd_options_page.scss',
-					
+					'<%= dist_path %>/css/lfd_options_page.css': '<%= pkg.dirs.src %>/sass/lfd_options_page.scss',
 				}
 			}
 		},
@@ -462,44 +450,18 @@ module.exports = function(grunt){
 					
 					//	composer
 						'composer:update',
-					
 
 					// copy from src to testingDir
 						'copy:root_files',
-						
 						'copy:vendor',
-						
-
-						
 						'copy:images',
-						
-
-						
-
 						'copy:readme',
 						
-					// assets from src to testingDir
-						
-
-						
-
-						
-
-						
-
-						
-
-						
-
 
 					// concat functions from src to testingDir
-
 						'_create_plugin_info:' + src_path + '/',
 						'concat_in_order:functions',
-						
-
 						'concat_in_order:plugin_main_file',
-
 						
 					// potomo
 						// ???
@@ -526,9 +488,8 @@ module.exports = function(grunt){
 			if ( version === '' || typeof version === 'undefined'){
 				version = 'test';
 			}
+
 			// check if arg install is specified in wp_installs
-
-
 			wp_installs = grunt.file.readJSON('wp_installs.json');
 			if ( install != '' && typeof wp_installs[install] != 'object' ){
 				grunt.warn("unknown local install");
@@ -621,10 +582,8 @@ module.exports = function(grunt){
 				var msg_obj = grunt.file.readJSON( msg_obj_path );
 				
 				var commit_msg = '';
-				
 
 				var key;
-
 				for (key in msg_obj) {
 					if ( (msg_obj.hasOwnProperty(key)) && ( key != 'test') ) {
 						commit_msg += msg_obj[key] + '\n';
@@ -714,8 +673,11 @@ module.exports = function(grunt){
 				grunt.log.writeln('dist version: ' + pkg.version);
 				
 				var dist_path = [
-					pkg.dirs.dist + '/' + pkg.name + '_v' + pkg.version + '/' + pkg.name,
-					pkg.dirs.dist + '/' + 'latest/' + pkg.name
+					// pkg.dirs.dist + '/' + pkg.name + '_v' + pkg.version + '/' + pkg.name,
+					pkg.dirs.dist + '/tags/' + pkg.version,
+					
+					// pkg.dirs.dist + '/' + 'latest/' + pkg.name
+					pkg.dirs.dist + '/' + 'trunk'
 				];
 				
 				// run tasks
@@ -748,29 +710,9 @@ module.exports = function(grunt){
 						'copy:root_files_dist',
 						
 						'copy:vendor_dist',
-						
-
-						
 						'copy:images_dist',
-						
-
-						
-
 						'copy:readme_dist',
 						
-					// assets from src to testingDir
-						
-
-						
-
-						
-
-						
-
-						
-
-						
-
 
 					// concat functions from src to dist
 
@@ -784,8 +726,6 @@ module.exports = function(grunt){
 						// ???
 						// 'potomo:dist',
 						
-						
-					
 				]);
 				
 			});
