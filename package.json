@@ -5,7 +5,7 @@
   "uri": "http://waterproof-webdesign.info/languages-frontend-display",
   "textDomain": "lfd-text",
   "domainPath": "/languages",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "qTranslate-X extension. Enable/disable languages on frontend",
   "main": "index.js",
   "scripts": {

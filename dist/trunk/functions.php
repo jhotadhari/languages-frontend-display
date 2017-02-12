@@ -453,7 +453,6 @@ function lfd_options_page_show_on_cb_if_all_languages_disabled(){
 	return count($languages_frontend) == 0;
 }
 ?>
-
 <?php
 /*
 	grunt.concat_in_order.declare('lfd_recursive_unset');

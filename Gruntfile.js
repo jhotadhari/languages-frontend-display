@@ -488,7 +488,8 @@ module.exports = function(grunt){
 			if ( version === '' || typeof version === 'undefined'){
 				version = 'test';
 			}
-
+
+
 			// check if arg install is specified in wp_installs
 			wp_installs = grunt.file.readJSON('wp_installs.json');
 			if ( install != '' && typeof wp_installs[install] != 'object' ){
@@ -543,11 +544,13 @@ module.exports = function(grunt){
 			if ( version === 'test' ){
 				src = abs_path_pkg + '/' + pkg.dirs.test + '/';
 
-			} else if ( version === 'latest'){
-				src = abs_path_pkg + '/' + pkg.dirs.dist + '/latest/' + pkg.name + '/';
+			} else if ( version === 'trunk'){
+				// src = abs_path_pkg + '/' + pkg.dirs.dist + '/latest/' + pkg.name + '/';
+				src = abs_path_pkg + '/' + pkg.dirs.dist + '/' + 'trunk' + '/';
 
 			} else if ( /((\d)\.(\d)\.(\d))/.test(version)){
-				src = abs_path_pkg + '/' + pkg.dirs.dist + '/' + pkg.name + '_v' + version + '/' + pkg.name + '/';
+				// src = abs_path_pkg + '/' + pkg.dirs.dist + '/' + pkg.name + '_v' + version + '/' + pkg.name + '/';
+				src = abs_path_pkg + '/' + pkg.dirs.dist + '/tags/' + version + '/';
 
 				if (! grunt.file.exists(src)){
 					grunt.warn('"' + version + '" is no valid version');

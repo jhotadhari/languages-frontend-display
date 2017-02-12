@@ -1,5 +1,5 @@
 === Languages Frontend Display ===
-Tags: 
+Tags: qTranslate,qTranslate-x,language,hide,disable,frontend
 Donate link: 
 Contributors: 
 Tested up to: 4.7.2
@@ -8,7 +8,7 @@ Stable tag: trunk
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-qTranslate-X extension. Enable/disable languages on frontened
+qTranslate-X extension. Enable/disable languages on frontend
 
 
 == Description ==
@@ -23,7 +23,7 @@ In case someone wants to access an excluded language, he/she/it/they will be red
 
 qTranslate-X option "Detect Browser Language" and  "URL Modification Mode -> Hide URL language information for default language" has to be false.
 
-tested with qTranslate-X version 3.4.6.8
+tested with qTranslate-X version 3.4.6.8.
 
 Thanks to CMB2 for their easy metaboxes and optionpages!
 
@@ -37,6 +37,9 @@ Upload and install this Plugin in the same way you\'d install any other plugin.
 1. http://waterproof-webdesign.info/wp-content/uploads/2017/02/LanguagesFrontendDisplay_settings.png
 
 == Changelog ==
+
+= 0.0.3 =
+Bug fix: some lost whitespace characters found their way between the closing and opening php tags. Resulted in a 'headers already sent' error on some servers.
 
 = 0.0.2 =
 added '(default language)' to settings multicheck
