@@ -2,7 +2,7 @@
 
 == Description ==
 		
-This Plugin is an extension for qTranslate-X (and will not work alone).
+This Plugin is an extension for [qTranslate-X](https://wordpress.org/plugins/qtranslate-x/) (and will not work alone).
 
 You can exclude some languages on frontend. Check the plugins settings page.
 
@@ -14,13 +14,16 @@ qTranslate-X option "Detect Browser Language" and  "URL Modification Mode -> Hid
 
 tested with qTranslate-X version 3.4.6.8.
 
-Thanks to CMB2 for their easy metaboxes and optionpages!
+= Thanks for beautiful ressoucres =
+* [CMB2](https://github.com/WebDevStudios/CMB2)
+* [Integration CMB2-qTranslate](https://github.com/jmarceli/integration-cmb2-qtranslate)
 
 == Installation ==
 Requirements:
-* qTranslate-X
+
+* [qTranslate-X](https://wordpress.org/plugins/qtranslate-x/)
 
 Upload and install this Plugin in the same way you\'d install any other plugin.
 
 == Screenshots ==
-1. http://waterproof-webdesign.info/wp-content/uploads/2017/02/LanguagesFrontendDisplay_settings.png
+1. Settings Page

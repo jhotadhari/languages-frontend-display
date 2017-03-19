@@ -1,0 +1,77 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the languages-frontend-display package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: languages-frontend-display 0.0.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-19 13:28+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/functions/lfd_get_languages.php:16
+msgid "(default language)"
+msgstr ""
+
+#: src/functions/lfd_options_page.php:63
+msgid "Languages Frontend Display"
+msgstr ""
+
+#: src/functions/lfd_options_page.php:136
+msgid "detect_browser_language has to be false."
+msgstr ""
+
+#: src/functions/lfd_options_page.php:139
+msgid ""
+"This plugin won't do anything, until the qTranslate-X option \"Detect "
+"Browser Language\" is set to false"
+msgstr ""
+
+#: src/functions/lfd_options_page.php:149
+msgid "hide_default_language has to be false."
+msgstr ""
+
+#: src/functions/lfd_options_page.php:152
+msgid ""
+"This plugin won't do anything, until the qTranslate-X option \"URL "
+"Modification Mode -> Hide URL language information for default language\" is "
+"set to false"
+msgstr ""
+
+#: src/functions/lfd_options_page.php:162
+msgid "default language is disabled."
+msgstr ""
+
+#: src/functions/lfd_options_page.php:165
+msgid ""
+"This plugin won't do anything, until you enable the default language again."
+msgstr ""
+
+#: src/functions/lfd_options_page.php:175
+msgid "all languages are disabled."
+msgstr ""
+
+#: src/functions/lfd_options_page.php:178
+msgid "come on, don't do that!"
+msgstr ""
+
+#: src/functions/lfd_options_page.php:186
+msgid "Enabled Languages on Frontend"
+msgstr ""
+
+#: src/functions/lfd_options_page.php:212
+msgid "Settings updated."
+msgstr ""
+
+#: src/plugin_main_file/load_functions.php:32
+#, php-format
+msgid "\"%s\" plugin requires \"%s\" plugin to be installed and activated!"
+msgstr ""

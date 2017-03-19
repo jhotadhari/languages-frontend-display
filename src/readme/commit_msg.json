@@ -1,3 +1,5 @@
 {
-  "test": "test"
+  "1": "bug fix: text domain was not loaded;",
+  "2": "abort if functions caled directly;",
+  "3": "Edit readme;"
 }
