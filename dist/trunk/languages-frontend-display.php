@@ -69,7 +69,7 @@ add_action('admin_enqueue_scripts', 'lfd_cmb2_init_qtranslate');
 
 
 function lfd_plugin_activate(){
-    if ( ! is_plugin_active( 'qtranslate-x/qtranslate.php' ) ) {
+    if ( ! is_plugin_active( 'qtranslate-x/qtranslate.php' ) && ! is_plugin_active( 'qtranslate-xt/qtranslate.php' )) {
         wp_die( lfd_get_admin_notice() . '<br><a href="' . admin_url( 'plugins.php' ) . '">&laquo; Return to Plugins</a>');
     }
 }
